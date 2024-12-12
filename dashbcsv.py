@@ -16,7 +16,7 @@ def carrega_dados(arq):
     dados = pd.read_csv(arq, sep=",", decimal=".")
     return dados
 
-query = "dados_1_10.csv"
+query = "https://gestaovirtus.com.br/temp/dados_1_10.csv"
 
 df = carrega_dados(query)
 df["validade"] = pd.to_datetime(df["Válido até"])
