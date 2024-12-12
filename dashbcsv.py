@@ -13,12 +13,14 @@ with open("dashbStyle.css") as f:
 ## @st.cache_data ==> Sintaxe para armazenar dados no cache do navegador
 @st.cache_data
 def carrega_dados(arq):
+    arq = f"https://gestaovirtus.com.br/temp/{arq}.csv"
     dados = pd.read_csv(arq, sep=",", decimal=".")
     return dados
 
-query = "https://gestaovirtus.com.br/temp/dados_1_10.csv"
+#arq = "https://gestaovirtus.com.br/temp/dados_1_10.csv"
+arq = st.query_params["a"]
 
-df = carrega_dados(query)
+df = carrega_dados(arq)
 df["validade"] = pd.to_datetime(df["Válido até"])
 df=df.sort_values("Grupo do Material")
 #df["month"] = df["validade"].apply(lambda x: str(x.year) + "-" + str(x.month))
