@@ -69,6 +69,7 @@ if ((grupo!="Todos") and (dia=="Todos")):
     df2 = df1[(df1["Grupo do Material"] == grupo) & (df1["Dias2"] != dia) & (df1["Situação do Material"]!="Vencido")]
 if ((grupo!="Todos") and (dia!="Todos")):
     df2 = df1[(df1["Grupo do Material"] == grupo) & (df1["Dias2"] == dia) & (df1["Situação do Material"]!="Vencido")]
+df2=df2.sort_values("Dias2")
 
 # métricas - total
 itens_total = df1.groupby("ID").count().reset_index()
